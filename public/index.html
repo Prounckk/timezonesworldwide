@@ -39,6 +39,8 @@
     footer{margin-top:16px; color:var(--muted); font-size:.9rem}
     a{color:var(--link); text-decoration:none}
     a:hover{text-decoration:underline}
+    .highlight{outline:2px solid var(--accent); box-shadow:0 0 0 4px rgba(34,211,238,.2) inset; border-radius:10px}
+    .you{display:inline-block; margin-left:.5rem; padding:.15rem .45rem; font-size:.75rem; border:1px solid rgba(148,163,184,.25); border-radius:999px; color:#0b1220; background:var(--accent)}
   </style>
 </head>
 <body>
@@ -48,6 +50,7 @@
     <h1>Popular Time Zones Worldwide</h1>
   </header>
   <p class="subtitle">A quick reference of commonly used time zones across regions. Times may observe daylight saving where applicable.</p>
+  <p id="your-tz" class="subtitle" aria-live="polite"></p>
 
   <section class="card">
     <div class="grid">
@@ -77,6 +80,81 @@
   <footer>
     Need a sharable link? See <a href="https://world-time-sync.com" target="_blank" rel="noopener">time zone converter: convert past, present, and future local times between time zones</a>.
   </footer>
+  <script>
+    (function(){
+      try{
+        const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+        const aliasMap = {
+          'America/New_York':'US/Eastern',
+          'America/Detroit':'US/Eastern',
+          'America/Toronto':'US/Eastern',
+          'America/Chicago':'US/Central',
+          'America/Mexico_City':'US/Central',
+          'America/Denver':'US/Mountain',
+          'America/Phoenix':'US/Mountain',
+          'America/Boise':'US/Mountain',
+          'America/Los_Angeles':'US/Pacific',
+          'America/Vancouver':'US/Pacific',
+          'Europe/Paris':'Europe/Paris',
+          'Europe/Madrid':'Europe/Paris',
+          'Europe/Rome':'Europe/Paris',
+          'Europe/Berlin':'Europe/Berlin',
+          'Europe/London':'Europe/London',
+          'Europe/Moscow':'Europe/Moscow',
+          'Asia/Dubai':'Asia/Dubai',
+          'Asia/Kolkata':'Asia/Kolkata',
+          'Asia/Shanghai':'Asia/Shanghai',
+          'Asia/Chongqing':'Asia/Shanghai',
+          'Asia/Harbin':'Asia/Shanghai',
+          'Asia/Tokyo':'Asia/Tokyo',
+          'Asia/Seoul':'Asia/Seoul',
+          'Asia/Singapore':'Asia/Singapore',
+          'Australia/Sydney':'Australia/Sydney',
+          'Australia/Perth':'Australia/Perth',
+          'Africa/Johannesburg':'Africa/Johannesburg',
+          'America/Sao_Paulo':'America/Sao_Paulo',
+          'America/Bogota':'America/Bogota',
+          'Etc/UTC':'UTC',
+          'UTC':'UTC',
+          'GMT':'UTC'
+        };
+        const normalized = aliasMap[tz] || tz;
+        const list = document.querySelectorAll('.grid .item');
+        let highlighted = false;
+        list.forEach(item => {
+          const label = item.querySelector('.tz');
+          if(!label) return;
+          const name = label.textContent.trim();
+          if(name === normalized){
+            item.classList.add('highlight');
+            // Turn the highlighted label into a link to world-time-sync
+            const link = document.createElement('a');
+            link.href = 'https://world-time-sync.com/?zones=America%252FToronto%2CUTC%2CEurope%252FLondon%2CAmerica%252FNew_York&now=1';
+            link.target = '_blank';
+            link.rel = 'noopener';
+            // Move the existing label contents into the link
+            while(label.firstChild){ link.appendChild(label.firstChild); }
+            label.appendChild(link);
+            const tag = document.createElement('span');
+            tag.className = 'you';
+            tag.textContent = 'Your time zone';
+            label.appendChild(tag);
+            highlighted = true;
+          }
+        });
+        const info = document.getElementById('your-tz');
+        if(info){
+          if(tz){
+            info.textContent = 'Your browser reports time zone: ' + tz + (highlighted ? '' : ' (not in the quick list)');
+          } else {
+            info.textContent = 'Could not detect your time zone.';
+          }
+        }
+      }catch(e){
+        // no-op: keep page usable
+      }
+    })();
+  </script>
 </main>
 </body>
 </html>
