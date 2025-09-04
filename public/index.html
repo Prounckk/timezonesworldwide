@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Popular Time Zones Worldwide</title>
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://timezonesworldwide.com">
+  <meta name="description" content="A simple list of the most popular time zones around the world.">
+  <link rel="icon" href="/favicon.ico">
+  <style>
+    :root{
+      --bg:#0f172a;
+      --card:#111827;
+      --text:#e5e7eb;
+      --muted:#9ca3af;
+      --accent:#22d3ee;
+      --link:#38bdf8;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background:linear-gradient(180deg,var(--bg),#0b1220 60%);
+      color:var(--text);
+      display:flex; align-items:center; justify-content:center;
+    }
+    main{width:min(960px,100%); padding:24px}
+    header{display:flex; align-items:center; gap:12px; margin-bottom:16px}
+    header img{width:28px; height:28px}
+    h1{font-size:clamp(1.4rem,2.5vw,2rem); margin:0}
+    p.subtitle{margin:.25rem 0 1rem; color:var(--muted)}
+    .card{background:rgba(17,24,39,.7); border:1px solid rgba(148,163,184,.15); border-radius:14px; overflow:hidden}
+    .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1px; background:rgba(148,163,184,.15)}
+    .item{background:var(--card); padding:16px 14px}
+    .tz{font-weight:600}
+    .utc{color:var(--accent)}
+    .desc{color:var(--muted); font-size:.9rem; margin-top:4px}
+    footer{margin-top:16px; color:var(--muted); font-size:.9rem}
+    a{color:var(--link); text-decoration:none}
+    a:hover{text-decoration:underline}
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <img src="/favicon.ico" alt="Globe icon">
+    <h1>Popular Time Zones Worldwide</h1>
+  </header>
+  <p class="subtitle">A quick reference of commonly used time zones across regions. Times may observe daylight saving where applicable.</p>
+
+  <section class="card">
+    <div class="grid">
+      <div class="item"><div class="tz utc">UTC</div><div class="desc">Coordinated Universal Time</div></div>
+      <div class="item"><div class="tz">US/Eastern</div><div class="desc">New York, Toronto (ET)</div></div>
+      <div class="item"><div class="tz">US/Central</div><div class="desc">Chicago, Mexico City (CT)</div></div>
+      <div class="item"><div class="tz">US/Mountain</div><div class="desc">Denver, Phoenix (MT/MST)</div></div>
+      <div class="item"><div class="tz">US/Pacific</div><div class="desc">Los Angeles, Vancouver (PT)</div></div>
+      <div class="item"><div class="tz">Europe/London</div><div class="desc">UK (GMT/BST)</div></div>
+      <div class="item"><div class="tz">Europe/Paris</div><div class="desc">Paris, Madrid, Rome (CET/CEST)</div></div>
+      <div class="item"><div class="tz">Europe/Berlin</div><div class="desc">Berlin (CET/CEST)</div></div>
+      <div class="item"><div class="tz">Europe/Moscow</div><div class="desc">Moscow (MSK)</div></div>
+      <div class="item"><div class="tz">Asia/Dubai</div><div class="desc">UAE (GST)</div></div>
+      <div class="item"><div class="tz">Asia/Kolkata</div><div class="desc">India (IST)</div></div>
+      <div class="item"><div class="tz">Asia/Shanghai</div><div class="desc">China (CST)</div></div>
+      <div class="item"><div class="tz">Asia/Tokyo</div><div class="desc">Japan (JST)</div></div>
+      <div class="item"><div class="tz">Asia/Seoul</div><div class="desc">South Korea (KST)</div></div>
+      <div class="item"><div class="tz">Asia/Singapore</div><div class="desc">Singapore (SGT)</div></div>
+      <div class="item"><div class="tz">Australia/Sydney</div><div class="desc">Sydney (AEST/AEDT)</div></div>
+      <div class="item"><div class="tz">Australia/Perth</div><div class="desc">Perth (AWST)</div></div>
+      <div class="item"><div class="tz">Africa/Johannesburg</div><div class="desc">South Africa (SAST)</div></div>
+      <div class="item"><div class="tz">America/Sao_Paulo</div><div class="desc">Brazil (BRT)</div></div>
+      <div class="item"><div class="tz">America/Bogota</div><div class="desc">Colombia (COT)</div></div>
+    </div>
+  </section>
+
+  <footer>
+    Need a sharable link? See <a href="https://world-time-sync.com" target="_blank" rel="noopener">time zone converter: convert past, present, and future local times between time zones</a>.
+  </footer>
+</main>
+</body>
+</html>

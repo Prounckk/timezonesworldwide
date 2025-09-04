@@ -1,0 +1,15 @@
+# wrangler.toml
+name = 'timezonesworldwide'
+main = "index.js"
+compatibility_date = "2025-08-18"
+
+[observability.logs]
+enabled = true
+
+[assets]
+directory = "./public"
+binding = "SITE"
+
+[[routes]]
+pattern = "timezonesworldwide.com"
+custom_domain = true
